@@ -2,14 +2,19 @@ public class EmployeeWageComputation {
 
     public static void main(String[] args) {
 
-        //set 1 as present  
-        int isPresent = 1;
-        //get random value
+        int ispresent=1;
+        int wagePerHr=20;
+        int fullDayHr=8;
+        int dailyEmpWage;
         double empCheck = Math.floor (Math.random() * 10) % 2;
-        if(empCheck == ispresent)
-            System.out.println("Employee is Present");
-        else
-            System.out.println("Employee is Absent"); 
+        
+        if (empCheck == ispresent){
+            dailyEmpWage=wagePerHr*fullDayHr;
+            System.out.println("Daily Wage ="+ dailyEmpWage);
+        }
+        else{
+            System.out.println("employee is absent");
+        }
     }
 
 }
