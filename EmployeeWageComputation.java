@@ -5,29 +5,34 @@ public class EmployeeWageComputation {
         final int isPresent=1;
         final int fullTime=1;
         int wagePerHr=20;
-        int partimeHr=8;
         int fullDayHr=16;
-        int workingDays=20;     
+        int totalHr=0;
+        int totalAttendance=0;    
         int monthlyEmpWage;
-        int empCheck = (int)(Math.random() * 10) % 2;
-        //check employee is present or absent
-        switch(empCheck){    
-            case isPresent  :    
-                int empType = (int)(Math.random() * 10) % 2;
-                monthlyEmpWage= (wagePerHr*fullDayHr) * workingDays;
-                //check employee type 
-                switch(empType){    
-                    case fullTime   : 
-                        System.out.println("Employee Type : Full Time ");
-                        System.out.println("Employee Wage : "+ monthlyEmpWage); 
-                    break;
-                    default:
-                        System.out.println("Employee Type : Part Time ");
-                        System.out.println("Employee Wage : "+ (monthlyEmpWage/2));
-                }              
-            break;   
-            default:
-                 System.out.println("Employee is Absent");
+        //iterate till attendace reaches 20 or hours reaches 100
+        while(totalAttendance <=20 && totalHr <=100){
+            int empCheck = (int)(Math.random() * 10) % 2;
+            //check employee is present or absent
+            switch(empCheck){    
+                case isPresent  :    
+                    int empType = (int)(Math.random() * 10) % 2;
+                    totalAttendance++;
+                    //check employee type and calculate total hours
+                    switch(empType){    
+                        case fullTime   : 
+                            totalHr = totalHr + fullDayHr;
+                        break;
+                        default:
+                            totalHr = totalHr + (fullDayHr/2);
+                            
+                    }              
+                break;   
+            }
         }
+        System.out.println("hours : "+ totalHr);
+        System.out.println("attendance: "+ totalAttendance);
+        //calculte monthly wage 
+        monthlyEmpWage = wagePerHr * totalHr;
+        System.out.println("Monthly Wage : "+ monthlyEmpWage);
     }
 }
